@@ -1,5 +1,5 @@
 import random
-import os
+import pygame
 from enum import Enum
 
 
@@ -13,19 +13,19 @@ class Suit(Enum):
 
 class Rank(Enum):
     """Enum for card ranks."""
-    FOUR = "10"
+    ACE = "A"
     TWO = "2"
-    THREE = "7"
+    THREE = "3"
+    FOUR = "4"
     FIVE = "5"
     SIX = "6"
-    SEVEN = "3"
+    SEVEN = "7"
     EIGHT = "8"
     NINE = "9"
-    TEN = "4"
+    TEN = "10"
     JACK = "J"
     QUEEN = "Q"
     KING = "K"
-    ACE = "A"
 
 
 class Card:
@@ -86,10 +86,10 @@ if __name__ == "__main__":
     clock = pygame.time.Clock()
     
     # Colors
-    GREEN = (0, 127, 0)
+    GREEN = (34, 139, 34)
     WHITE = (255, 255, 255)
     BLACK = (0, 0, 0)
-    RED = (127, 0, 0)
+    RED = (220, 20, 60)
     GRAY = (200, 200, 200)
     
     # Fonts - use system font for Unicode support
@@ -123,16 +123,6 @@ if __name__ == "__main__":
         def update_hover(self, pos):
             self.hovered = self.rect.collidepoint(pos)
     
-<<<<<<< HEAD
-    while True:
-        print(f"Your cards: {player_cards if player_cards else 'None'}")
-        print(f"Cards remaining in deck: {deck.cards_remaining()}\n")
-        print("Options:")
-        print("  1. Draw a card")
-        print("  2. Leave the game")
-        print("  3. Reshuffle deck (cards returned to deck)")
-        print(" and NO, all of them at once is NOT an option !")
-=======
     # Create buttons
     draw_button = Button(50, 600, 150, 60, "Draw Card")
     reshuffle_button = Button(250, 600, 150, 60, "Reshuffle")
@@ -141,12 +131,11 @@ if __name__ == "__main__":
     # Main game loop
     running = True
     message = "Welcome to Card Game! Click 'Draw Card' to begin."
-    message_timer = 10
+    message_timer = 0
     
     while running:
         clock.tick(60)
         mouse_pos = pygame.mouse.get_pos()
->>>>>>> origin/main
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
